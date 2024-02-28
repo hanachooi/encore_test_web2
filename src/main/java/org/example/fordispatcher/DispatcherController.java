@@ -15,6 +15,8 @@ import java.io.IOException;
 // DispatcherController 는 프론트 컨트롤러로 사용자의 모든 요청이 여기로 모이게 됌.
 // .hanwha 인 url 이면 모두 이 프론트컨트롤러로 연결 됌
 // Factory 에서 요청을 처리해주는 Controller를 찾아서, dispatcher에 리턴을 해줌.
+
+// 이게 서블릿의 역할.
 @WebServlet("*.hanwha")
 public class DispatcherController extends HttpServlet {
 
@@ -32,9 +34,11 @@ public class DispatcherController extends HttpServlet {
     private void process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("debug >>> FrontController process");
         System.out.println("client request path : " + req.getRequestURL());
+        // BeanFactory 객체 싱글톤이 적용되기 위해서, 객체를 getInstance()로 넘겨줌.
         BeanFactory factory = BeanFactory.getInstance();
         Controller controller = factory.getCtrl(req.getRequestURI());
-        View view = controller.execute();
+        // 실행되어야 할 jsp가 넘겨져야 함.
+        View view = controller.execute(req, resp);
 
         /* 아래의 코드는 고정. getRequestDispatcher 안에, .jsp 파일이 들어가야 하는데, 이를 Controller를 골라온
         dispatcher의 반환값인 View를 넣고, 해당 View의 jsp 파일을 가져옴.
@@ -42,8 +46,15 @@ public class DispatcherController extends HttpServlet {
         dispatcherView.forward(req, resp);
         */
 
+
         RequestDispatcher dispatcherView = req.getRequestDispatcher(view.getResponseJsp());
         dispatcherView.forward(req, resp);
+        if (view.isFlag()){
+            RequestDispatcher rd = req.getRequestDispatcher(view.getResponseJsp());
+            rd.forward(req,resp);
 
+        }else{
+            resp.sendRedirect(view.getResponseJsp());
+        }
     }
 }

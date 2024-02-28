@@ -17,6 +17,7 @@
 <!-- 컨트롤러를 통해서, 맨 첫 화면이 렌더링이 되는 것이 좋음 -->
 <%-- 아래의 주석으로 java의 코드를 사용할 수 있고, ! 로 주석을 잡으면, 실행이 되게 되므로, % 로 잡아야 한다.
 주석이 !이면, 구글 개발자도구에서 주석이 보이게 됌.
+모든 MVC2  패턴은 Controller를 거쳐서 화면이 렌더링 되어야 함
     <%!
         private int number = 10;
         public int getNumber(){
@@ -25,5 +26,5 @@
     %>
  --%>
 <script>
-    location.href = "index.encore";
+    location.href = "index.hanwha";
 </script>

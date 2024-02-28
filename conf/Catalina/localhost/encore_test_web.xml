@@ -3,5 +3,7 @@
   <Resources cacheMaxSize="10240">
     <PreResources base="C:/Users/Playdata/IdeaProjects/encore_test_web2/build/classes/java/main" className="org.apache.catalina.webresources.DirResourceSet" webAppMount="/WEB-INF/classes"/>
     <PostResources base="C:/Users/Playdata/.gradle/caches/modules-2/files-2.1/javax.servlet/javax.servlet-api/3.1.0/3cd63d075497751784b2fa84be59432f4905bf7c/javax.servlet-api-3.1.0.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/javax.servlet-api-3.1.0.jar"/>
+    <PostResources base="C:/Users/Playdata/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.4/7103ab519b1cdbb0642ad4eaf1db209d905d0f96/lombok-1.18.4.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/lombok-1.18.4.jar"/>
+    <PostResources base="C:/Users/Playdata/.gradle/caches/modules-2/files-2.1/org.mariadb.jdbc/mariadb-java-client/2.4.0/87f88656d9cf5381fc3c11c8e52d42f9eb23247c/mariadb-java-client-2.4.0.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/mariadb-java-client-2.4.0.jar"/>
   </Resources>
 </Context>
