@@ -1,25 +1,52 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<!DOCTYPE>
+<%@ page import="org.example.dto.ResponseUserDTO" %>
+<!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Document</title>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
 </head>
-<div align="center">SW 5th landing page</div>
-<div align = "right">
-    <%-- form 에서 메서드는 get이 아닌, post를 이용하는 것이 좋다. --%>
-    <form method = "post" action = "login.hanwha">
-        <%-- 넘어갈 때, DTO 에서 이용하려면, DTO 와 넘겨지는 변수명을 동일하게 name을 설정해야 한다. --%>
-            <!-- submit을하면 login.hanwha으로 액션이 넘어간다. -->
-        <input type = "text"        name = "id">
-        <input type = "password" name = "pwd">
-        <input type = "submit" values = "login">
-        <%-- 서버와 통신하는 방법은, form 과 a 를 이용해서만 가능 --%>
+<body>
+
+<%@ include file="./common/header.jsp"%>
+
+<p/>
+<%!
+    private ResponseUserDTO user;
+%>
+<%
+    user = (ResponseUserDTO) session.getAttribute("user");
+    if (user == null) {
+%>
+<div align="right">
+    <form method="post" action="login.hanwha">
+        <input type="text" name="id">
+        <input type="password" name="pwd">
+        <input type="submit" value="login">
+
         &nbsp;&nbsp;
-        <a href = "join.encore">JOIN</a>
+        <a href="join.encore">JOIN</a>
     </form>
 </div>
-<body>
+<%
+} else {
+%>
+<div align="right">
+    <%= user.getName() %>님 환영합니다.
+    &nbsp;&nbsp;
+    <!-- 링크를 의미하는 a tag 는 무조건 get 데이터를 전달할 수 있다.  -->
+    <a href="logout.hanwha">로그아웃</a>
+
+</div>
+<%
+    }
+%>
+
+<hr/>
+<ul>
+    <li><a href = "select.hanwha">전체출력</a></li>
+</ul>
+<%@ include file="./common/footer.jsp"%>
 </body>
 </html>

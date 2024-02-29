@@ -15,6 +15,7 @@ import java.io.IOException;
 // DispatcherController 는 프론트 컨트롤러로 사용자의 모든 요청이 여기로 모이게 됌.
 // .hanwha 인 url 이면 모두 이 프론트컨트롤러로 연결 됌
 // Factory 에서 요청을 처리해주는 Controller를 찾아서, dispatcher에 리턴을 해줌.
+// 응답 : Controller는 View를 서블릿에 반환해주면, Servlet이 화면을 렌더링.
 
 // 이게 서블릿의 역할.
 @WebServlet("*.hanwha")

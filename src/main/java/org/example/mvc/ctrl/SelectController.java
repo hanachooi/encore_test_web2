@@ -29,11 +29,15 @@ public class SelectController implements Controller {
         System.out.println("SelectController.execute");
 
         for(ResponseUserDTO dto : list){
-            System.out.println(dto.toString());
+            System.out.println(dto);
         }
+
+        // 데이터 심기
+        req.setAttribute("list", list);
+
         View view = new View();
         view.setFlag(true);
-        view.setResponseJsp("./ok.jsp");
+        view.setResponseJsp("list.jsp");
         return view;
     }
 }

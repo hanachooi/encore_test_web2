@@ -10,6 +10,7 @@
 
 <body>
 
+<!-- user의 이름은 getter, setter 이 필요하게 된다. -->
     ${user.name} 님 환영합니다.
 
 </body>

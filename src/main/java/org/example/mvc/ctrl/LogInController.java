@@ -10,6 +10,7 @@ import org.example.mvc.view.View;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class LogInController implements Controller {
 
@@ -46,9 +47,12 @@ public class LogInController implements Controller {
 
         if(user != null){
             // 로그인이 정상적으로 됌.
-            req.setAttribute("user", user);
+            // req.setAttribute("user", user);  request 단위로 데이터 forwarding
+            HttpSession session = req.getSession(); // session create  ,, getSession(false)는 기존에 세션이 있는지를 확인
+            session.setAttribute("user", user); // sesson 단위로 데이터 forwarding
+            // 이 세션의 데이터를 main.jsp 에 심어주게 됌.
             view.setFlag(true);
-            view.setResponseJsp("./ok.jsp");
+            view.setResponseJsp("./main.jsp");
             return view;
         }else{
             // 로그인이 정상적으로 작동되지 않음.
